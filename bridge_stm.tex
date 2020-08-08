@@ -1,0 +1,331 @@
+% This is mediocre Latex code to create the science traceability matrix for the BRIDGE mission designed at JPL, summer 2020
+
+\documentclass[10pt]{book}
+\usepackage{cals}
+\usepackage[paperwidth=11in, paperheight=9.5in, margin=0.1in]{geometry}
+\usepackage{graphicx}
+
+\let\nc=\nullcell                                                  % Shortcuts
+\let\sc=\spancontent
+
+% Helpful links
+% https://tex.stackexchange.com/questions/66596/vertical-alignment-in-multirow-using-cells-with-1-lines
+% https://tex.stackexchange.com/questions/319734/problems-merging-cells
+% http://ctan.math.washington.edu/tex-archive/macros/latex/contrib/cals/examples/demo.pdf
+
+
+\begin{document}
+
+\begin{calstable}
+\tiny
+% Defining 3 column relativ to each other and relativ to the margins
+\colwidths{{1.35in}{1.35in}{1.35in}{1.35in}{1.35in}{1.35in}{1.35in}{1.35in}}
+
+% Set up the tabular
+\makeatletter
+\newcommand*{\calsNoVertRules}{%
+    \renewcommand*{\cals@cs@width}{0pt}%
+}
+
+\newcommand*{\calsTopLines}{%
+    \renewcommand*{\cals@borderT}{0.4pt}%
+}
+
+\newcommand*{\calsBottomLines}{%
+    \renewcommand*{\cals@borderB}{0.4pt}%
+}
+
+\makeatother
+\def\cals@framers@width{0.4pt}   % Outside frame rules, reduce if the rule is too heavy
+%\def\cals@framecs@width{0.4pt}
+%\def\cals@bodyrs@width{0.4pt}
+%\cals@setpadding{Ag}
+%\cals@setcellprevdepth{Al}
+%\def\cals@cs@width{0.4pt}        % Inside rules, reduce if the rule is too heavy
+%\def\cals@rs@width{0.4pt}
+%\def\cals@bgcolor{}
+
+%\def\tb{\ifx\cals@borderT\relax     % Top border switch (off-on)
+%    \def\cals@borderT{0pt}
+%\else \let\cals@borderT\relax\fi}
+
+%\def\bb{\ifx\cals@borderB\relax     % Botton border switch (off-on)
+%    \def\cals@borderB{0pt}
+%\else \let\cals@borderB\relax\fi}
+
+%\def\rb{\ifx\cals@borderR\relax     % Right border switch (off-on)
+%    \def\cals@borderR{0pt}
+%\else \let\cals@borderR\relax\fi}
+
+%\def\lb{\ifx\cals@borderL\relax     % Left border switch (off-on)
+%    \def\cals@borderL{0pt}
+%\else \let\cals@borderL\relax\fi}
+
+\calsNoVertRules
+\calsTopLines
+\calsBottomLines
+
+%%%% Things learned
+% within \nc (\nullcell) you need to include the border (left, top, right, bottom)
+% \vfil will center the text vertically
+% Text spanning multi rows needs to go at the end of the null cell
+
+% Header
+%\brow
+%    \nc{ltb}
+%    \nc{rtb}
+%    \alignC\sc{\vfil Target}
+%    \nc{ltb}
+%    \nc{rtb}
+%    \alignC\sc{\vfil Science Measurement Requirements}
+%    \nc{ltb}
+%    \nc{tb}
+%    \nc{rtb}
+%    \alignC\sc{\vfil Instrument Requirements}
+%    \nc{rltb}
+%    \alignC\sc{\vfil Performance}
+%\erow
+
+% Sub-header
+\brow
+\bfseries
+    \alignC \cell{\vfil Science Goal}
+    \cell{\vfil Science Objective}
+    \cell{\vfil Physical Parameters}
+    \cell{\vfil Observables}
+    \cell{\vfil Instrument}
+    \cell{\vfil Instrument Functional Requirements}
+    \cell{\vfil Projected Performance}
+    \cell{\vfil Mission Requirements}
+\mdseries
+\erow
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Goal 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Row 1 
+\brow
+    \nc{ltr}
+    \nc{ltr}
+    \nc{ltr}
+    \alignC \cell{\vfil 7.4~$\mu$m (aliphatic), 12.5~$\mu$m (unsaturated), 7--14~$\mu$m (PAH), 7.4~$\mu$m (oxygen groups), 6.5~$\mu$m (nitrogen groups), 7.1~$\mu$m (ketones and carbonyl)}
+    \nc{ltr}
+    \nc{ltr}
+    \nc{ltr}
+    \nc{ltr}
+\erow
+
+% Row 2
+\brow
+    \nc{lr}
+    \nc{lr}
+    \nc{lr}
+    \alignC \cell{\vfil 5.3~$\mu$m (tholins)}
+    \nc{lbr} \alignC \sc{\vfil Mid-IR spectrometer}
+    \nc{lbr} \alignC \sc{\vfil 5--14~$\mu$m spectral range; 0.02~$\mu$m spectral resolution; absorptions $>$1\% in reflectance}
+    \nc{lbr} \alignC \sc{\vfil 5--15~$\mu$m spectral range; 0.01~$\mu$m spectral resolution; absorptions $>$0.75\% in reflectance}
+    \nc{lr}
+\erow
+
+% Row 3
+\brow
+    \nc{lr}
+    \nc{lr}
+    \nc{lrb} \alignC \sc{\vfil The presence of functional groups of organic matter. PAHs and tholins are particularly interesting for their biological and space weathering implications.}
+    \alignC \cell{\vfil 3.2--3.4~$\mu$m (C-H), 1.6 and 2.5~$\mu$m (O-H), 2.2~$\mu$m ($\mathrm{N_2}$)}
+    \nc{ltr}
+    \nc{ltr}
+    \nc{ltr}
+    \nc{lr}
+\erow
+
+% Row 4
+\brow
+    \nc{lr}
+    \nc{lr}
+    \alignC \cell{\vfil The presence of OH, CH, and $\mathrm{N_2}$ to better than 1\% precision.}
+    \alignC \cell{\vfil 2.7--2.8~$\mu$m (O-H)}
+    \nc{lbr} \alignC\sc{\vfil Near-IR spectrometer}
+    \nc{lbr} \alignC\sc{\vfil 1.6--3.2~$\mu$m spectral range; 0.02~$\mu$m spectral resolution; absorptions $>$1\% in reflectance}
+    \nc{lbr} \alignC\sc{\vfil 1--4~$\mu$m spectral range; 0.01~$\mu$m spectral resolution; absorptions $>$0.75\% in reflectance}
+    \nc{lbr} \alignC\sc{\vfil 0.3~mrad control (to keep object in field of view). Launch within six months of detection of the ISO.}
+\erow
+
+% Row 5
+\brow
+    \nc{lbr} \alignC\sc{\vfil Determine whether prebiotic chemical ingredients can be dispersed between stellar systems and the interstellar medium.}
+    \nc{lbr} \alignC\sc{\vfil Determine whether the ISO contains prebiotic chemical ingredients.}
+    \alignC \cell{\vfil The abundance of N, P, and S relative to O.}
+    \alignC \cell{\vfil 400~nm (N), 254~nm (P), 420~nm (S), 278~nm (O)}
+    \alignC \cell{\vfil UV-visible spectrometer}
+    \alignC \cell{\vfil 250--425~nm spectral range; 1~nm spectral resolution; emission $>$1\% continuum}
+    \alignC \cell{\vfil 200--600 nm spectral range; 0.4~nm spectral resolution; emission $>$0.1\% continuum}
+    \alignC \cell{\vfil Observe at the beginning of the impact through the first 5 seconds of decay. Impact that can be observed by the remote sensing suite with a minimum energy of Deep Impact.}
+\erow
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Goal 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Row 1
+\brow
+    \nc{ltr}
+    \nc{ltr}
+    \alignC \cell{\vfil Measurement of $\mathrm{\Delta^{17}O}$.}
+    \alignC \cell{\vfil 312.1~nm ($\mathrm{^{16}}$O), 147.7~nm ($\mathrm{^{17}}$O), 312.1~nm ($\mathrm{^{18}}$O)}
+    \nc{ltr}
+    \alignC \cell{\vfil 307--317~nm and 146--149~nm spectral ranges; 0.03~nm spectral resolution; emission greater than 0.1\% continuum}
+    \alignC \cell{\vfil 305--320~nm and 131--151~nm spectral ranges; 0.009~nm spectral resolution; emission greater than 0.1\% continuum in echelle channel}
+    \nc{ltr}
+\erow
+
+% Row 2
+\brow
+    \nc{lr}
+    \nc{lr}
+    \alignC \cell{\vfil Atomic abundances to better than 5\% precision.}
+    \alignC \cell{\vfil 567~nm (Si), 264 and 282~nm (Al), 375 and 238~nm (Fe), 393 and 397~nm (Ca), 314 and 589~nm (Na), 208~nm (K), 518~nm (Mg), 336 and 521~nm (Ti), 403~nm (Mn), 299~nm (Ni)}
+    \nc{lr}
+    \alignC \cell{\vfil 200--590~nm spectral range; 0.5~nm spectral resolution; emission greater than 1\% continuum}
+    \nc{ltr}
+    \nc{lr}
+\erow
+
+% Row 3
+\brow
+    \nc{lr}
+    \nc{lbr} \alignC\sc{\vfil Determine whether the ISO formed in an environment with chemical composition similar to our solar system.}
+    \alignC \cell{\vfil Relative abundances of noble gases.}
+    \alignC \cell{\vfil 588~nm (He), 540 and 585~nm (Ne), 459 and 473~nm (Ar), 557~nm (Kr), and 481 and 492~nm (Xe)}
+    \nc{lbr} \alignC\sc{\vfil UV-visible spectometer}
+    \alignC \cell{\vfil 450--590~nm spectral range; 0.5~nm spectral resolution; emission greater than 1\% continuum}
+    \nc{lbr} \alignC\sc{\vfil 200--600~nm spectral range; 0.4~nm spectral resolution; emission greater than 0.1\% continuum}
+    \nc{lbr} \alignC\sc{\vfil Observe at the beginning of the impact through the first 5 seconds of decay. Impact that can be observed by the remote sensing suite with a minimum energy of Deep Impact.}
+\erow
+
+%%%%%%%%%%%%% Objective 3
+
+% Row 4
+\brow
+    \nc{lr}
+    \nc{ltr}
+    \nc{ltr}
+    \alignC \cell{\vfil 1.6, 1.4, 2.0, and 2.7~$\mu$m ($\mathrm{CO_2}$ ice); 1.05, 1.3, 1.55, 1.65, 2.0, and 3.1~$\mu$m ($\mathrm{H_2O}$ ice); 2.0, 2.1, and 3.0~$\mu$m ($\mathrm{NH_3}$ ice); 1.0, 1.65, 1.82, and 2.2~$\mu$m ($\mathrm{CH_4}$ ice); 2.15~$\mu$m ($\mathrm{N_2}$ ice)}
+    \nc{ltr}
+    \alignC \cell{\vfil 1.0--3.2~$\mu$m spectral range; 0.02~$\mu$m spectral resolution; absorptions greater than 1\% in reflectance.}
+    \nc{ltr}
+    \nc{ltr}
+\erow
+
+% Row 5
+\brow
+    \nc{lr}
+    \nc{lr}
+    \nc{lr}
+    \alignC \cell{\vfil 1.0~$\mu$m (olivine), 2.0~$\mu$m (pyroxene), 1.0--1.5~$\mu$m (plagioclase)}
+    \nc{lbr} \alignC\sc{\vfil Near-IR specrometer}
+    \alignC \cell{\vfil  1.0--2.2~$\mu$m spectral range; 0.02~$\mu$m spectral resolution; absorptions greater than 1\% in reflectance}
+    \nc{lbr} \alignC\sc{\vfil 1--4~$\mu$m spectral range; 0.01~$\mu$m spectral resolution; absorptions greater than  0.75\%}
+    \nc{lbr} \alignC\sc{\vfil 0.3~mrad control (to keep object in field of view). Launch within six months of detection of the ISO.}
+\erow
+
+% Row 6
+\brow
+    \nc{lr}
+    \nc{lr}
+    \nc{lbr} \alignC\sc{\vfil Spectral identification of rocks and ices.}
+    \alignC \cell{\vfil See above relating to the physical parameter ``Atomic abundances to better than 5\% precision''.}
+    \alignC \cell{\vfil UV-visible spectrometer.}
+    \alignC \cell{\vfil See above relating to the physical parameter ``Atomic abundances to better than 5\% precision''}
+    \alignC \cell{\vfil See above relating to the physical parameter ``Atomic abundances to better than 5\% precision''}
+    \nc{ltr}
+\erow
+
+% Row 7
+\brow
+    \nc{lr}
+    \nc{lr}
+    \nc{ltr}
+    \alignC \cell{\vfil 9.7--10.6~$\mu$m (plagioclase)}
+    \nc{ltr}
+    \alignC \cell{\vfil 9.5--10.8~$\mu$m spectral range; 0.05~$\mu$m spectral resolution; absorptions greater than 1\% in reflectance}
+    \nc{ltr}
+    \nc{lr}
+\erow
+
+% Row 8
+\brow
+    \nc{lr}
+    \nc{lr}
+    \nc{lr}
+    \alignC \cell{\vfil 9.0--9.8 and 10--12~$\mu$m (clinopyroxene)}
+    \nc{lr}
+    \alignC \cell{\vfil 8.3--10.5~$\mu$m spectral range; 0.02~$\mu$m spectral resolution; absorptions greater than 1\% in reflectance}
+    \nc{lr}
+    \nc{lr}
+\erow
+
+% Row 9
+\brow
+    \nc{lr}
+    \nc{lr}
+    \nc{lr}
+    \alignC \cell{\vfil 9.5--12.0~$\mu$m (olivine)}
+    \nc{lr}
+    \alignC \cell{\vfil 9.0--12.0~$\mu$m spectral range; 0.1~$\mu$m spectral resolution; absorptions greater than 1\% in reflectance}
+    \nc{lr}
+    \nc{lr}
+\erow
+
+% Row 10
+\brow
+    \nc{lr}
+    \nc{lr}
+    \nc{lr}
+    \alignC \cell{\vfil 13.1~$\mu$m (oxides)}
+    \nc{lbr} \alignC\sc{\vfil Mid-IR spectrometer}
+    \alignC \cell{\vfil 12.0--14.0~$\mu$m spectral range; 0.02~$\mu$m spectral resolution; absorptions greater than 1\% in reflectance}
+    \nc{lbr} \alignC\sc{\vfil 5--15~$\mu$m spectral range; 0.01~$\mu$m spectral resolution; absorptions greater than 0.75\%}
+    \nc{lr}
+\erow
+
+% Row 11
+\brow
+    \nc{lr}
+    \nc{lr}
+    \nc{lbr} \alignC\sc{\vfil Molar abundances of minerals to the 1\% precision level.}
+    \alignC \cell{\vfil See above relating to the physical parameter ``The abundance of N, P, and S relative to O.''}
+    \alignC \cell{\vfil UV-visible spectrometer}
+    \alignC \cell{\vfil See above relating to the physical parameter ``The abundance of N, P, and S relative to O.''}
+    \alignC \cell{\vfil See above relating to the physical parameter ``The abundance of N, P, and S relative to O.''}
+    \nc{lbr} \alignC\sc{\vfil Observe at the beginning of the impact through the first 5 seconds of decay. Impact that can be observed by the remote sensing suite with a minimum energy of Deep Impact.}
+\erow
+
+% Row 12
+\brow
+    \nc{lr}
+    \nc{lr}
+    \alignC \cell{\vfil The ratio of rock/ice in the surface exposure to the 1\% precision level.}
+    \alignC \cell{\vfil Spatial variation in 350--850~nm intensity.}
+    \alignC \cell{\vfil Impactor camera}
+    \alignC \cell{\vfil 10~m/pixel at closest approach}
+    \alignC \cell{\vfil 7.5~m/pixel at closest approach}
+    \alignC \cell{\vfil Observe at the time leading up to impact.}
+\erow
+
+% Row 13
+\brow
+    \nc{lrb} \alignC\sc{\vfil Determine whether interstellar objects form via the same processes that created objects within our solar system.}
+    \nc{lrb} \alignC\sc{\vfil Determine if processes in extrasolar systems lead to bodies similar to those found in our solar system.}
+    \alignC \cell{\vfil Bulk morphological properties of the ISO to 10~m resolution.}
+    \alignC \cell{\vfil Intensity and its variation between 300--700~nm.}
+    \alignC \cell{\vfil Spacecraft camera}
+    \alignC \cell{\vfil 25~m/pixel at closest approach}
+    \alignC \cell{\vfil 20~m/pixel at closest approach}
+    \alignC \cell{\vfil 0.3~mrad control (to keep object in field of view). Launch within six months of detection of the ISO. Camera slew of 0.43~deg/sec at closest approach.}
+\erow
+
+\end{calstable}\par
+
+\end{document}
